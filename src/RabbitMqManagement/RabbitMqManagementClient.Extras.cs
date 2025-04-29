@@ -5,6 +5,9 @@ using System.Net;
 public partial class RabbitMqManagementClient
 {
     
+    /// <summary>
+    /// Create a user
+    /// </summary>
     public async Task CreateUser(string username, string password, params RoleTags[] tags)
     {
         var path = $"/api/users/{username}?{RabbitPagination.Default().ToQueryString()}";
@@ -22,6 +25,9 @@ public partial class RabbitMqManagementClient
         }
     }
 
+    /// <summary>
+    /// Set Permissions
+    /// </summary>
     public async Task<HttpStatusCode> SetPermissions(string vhost, string username, string configure, string write, string read)
     {
         var path = $"/api/permissions/{vhost}/{username}";
@@ -35,18 +41,28 @@ public partial class RabbitMqManagementClient
         return await _http.SimplePut(path, payload);
     }
 
+    /// <summary>
+    /// Get RabbitMQ Extensions
+    /// </summary>
     public async Task<List<RabbitMqAdminExtensionResponse>> GetExtensions()
     {
         var path = "/api/extensions";
         return await _http.SimpleGet<List<RabbitMqAdminExtensionResponse>>(path) ?? [];
     }
 
+    /// <summary>
+    /// Get RabbitMq Feature Flags
+    /// </summary>
+    /// <returns></returns>
     public async Task<List<RabbitMqFeatureFlagResponse>> GetFeatureFlags()
     {
         var path = "/api/feature-flags";
         return await _http.SimpleGet<List<RabbitMqFeatureFlagResponse>>(path) ?? [];
     }
 
+    /// <summary>
+    /// Get Deprecated Features
+    /// </summary>
     public async Task<List<RabbitMqDeprecatedFeatureResponse>> GetDeprecatedFeatures()
     {
         var path = "/api/deprecated-features";
@@ -60,6 +76,9 @@ public partial class RabbitMqManagementClient
         }
     }
     
+    /// <summary>
+    /// Get Deprecated features that are used
+    /// </summary>
     public async Task<List<RabbitMqDeprecatedFeatureResponse>> GetDeprecatedFeaturesUsed()
     {
         try

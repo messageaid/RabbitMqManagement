@@ -5,6 +5,9 @@ using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text.Json;
 
+/// <summary>
+/// Wrapper to make HTTP Calls easier
+/// </summary>
 public static class HttpExtensions
 {
     static readonly JsonSerializerOptions _options;
@@ -109,5 +112,13 @@ public static class HttpExtensions
         HttpContent content = JsonContent.Create(input);
         using var response = await client.PutAsync(path, content);
         return response.StatusCode;
+    }
+    
+    /// <summary>
+    /// For Testing
+    /// </summary>
+    public static T? Deserialize<T>(this HttpClient _, string json)
+    {
+        return JsonSerializer.Deserialize<T>(json, _options);
     }
 }

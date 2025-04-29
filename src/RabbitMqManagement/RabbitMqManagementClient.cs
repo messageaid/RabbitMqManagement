@@ -8,12 +8,24 @@ using System.Text;
 /// https://pulse.mozilla.org/api/index.html
 /// </summary>
 [DebuggerDisplay("{DebuggerDisplay()}")]
-public partial class RabbitMqManagementClient
+public partial class RabbitMqManagementClient: IDisposable
 {
     readonly HttpClient _http;
     readonly string _urlVirtualHost;
     readonly string _virtualHost;
-    
+
+    /// <summary>
+    /// Create with a general HttpClient
+    /// </summary>
+    public RabbitMqManagementClient(Uri uri)
+        : this(new HttpClient(), uri)
+    {
+        
+    }
+
+    /// <summary>
+    /// Create with a specific Http Client
+    /// </summary>
     public RabbitMqManagementClient(HttpClient http, Uri uri)
     {
         _http = http;
@@ -44,7 +56,14 @@ public partial class RabbitMqManagementClient
     {
         var vhost = await _http.SimpleGet<RabbitMqHttpVHost>("/api/whoami");
     }
-    
+
+
+    /// <inheritdoc />
+    public void Dispose()
+    {
+        _http.Dispose();
+    }
+
     string DebuggerDisplay()
     {
         return _http.BaseAddress?.ToString() ?? "unknown";

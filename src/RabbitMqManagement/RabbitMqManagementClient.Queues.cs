@@ -61,12 +61,18 @@ public partial class RabbitMqManagementClient
                 yield break;
         }
     }
-    
+
+    /// <summary>
+    /// Purge a queue in the current vhost
+    /// </summary>
     public Task PurgeQueue(string name)
     {
         return PurgeQueue(_virtualHost, name);
     }
 
+    /// <summary>
+    /// Purge a queue in a VHost
+    /// </summary>
     public async Task PurgeQueue(string vhost, string name)
     {
         // /api/queues/vhost/name/contents
@@ -88,6 +94,9 @@ public partial class RabbitMqManagementClient
         await CreateQueue(_urlVirtualHost, name);
     }
 
+    /// <summary>
+    /// create a queue in a specific vhost
+    /// </summary>
     public async Task CreateQueue(string vhost, string name)
     {
         var payload = new CreateRabbitMqQueue

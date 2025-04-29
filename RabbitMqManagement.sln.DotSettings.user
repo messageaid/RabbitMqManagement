@@ -4,5 +4,6 @@
     &lt;TestId&gt;NUnit3x::97655E66-AFF8-4C6F-8031-52DA46E9EB02::net9.0::MessageAid.RabbitMqManagement.Tests.WithVirtualHost&lt;/TestId&gt;
     &lt;TestId&gt;NUnit3x::97655E66-AFF8-4C6F-8031-52DA46E9EB02::net9.0::MessageAid.RabbitMqManagement.Tests.WithRootVirtualHost&lt;/TestId&gt;
     &lt;TestId&gt;NUnit3x::97655E66-AFF8-4C6F-8031-52DA46E9EB02::net9.0::MessageAid.RabbitMqManagement.Tests.WithBareConnection&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::97655E66-AFF8-4C6F-8031-52DA46E9EB02::net9.0::MessageAid.RabbitMqManagement.Tests.RabbitMqSerializationTests.Deserialize&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

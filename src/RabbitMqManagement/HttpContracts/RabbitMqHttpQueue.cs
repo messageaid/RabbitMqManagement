@@ -84,6 +84,9 @@ public class RabbitMqHttpQueue
     /// </summary>
     public string Name { get; set; }
 
+    /// <summary>
+    /// Message Details
+    /// </summary>
     public RabbitMqHttpQueueDetails MessagesDetails { get; set; }
     
     /// <summary>
@@ -105,4 +108,7 @@ public class RabbitMqHttpQueue
     }
 }
 
+/// <summary>
+/// Queue Details
+/// </summary>
 public record RabbitMqHttpQueueDetails(decimal Rate);

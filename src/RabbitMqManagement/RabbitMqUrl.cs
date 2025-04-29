@@ -1,12 +1,21 @@
 namespace MessageAid.RabbitMqManagement;
 
+/// <summary>
+/// Helper class
+/// </summary>
 public static class RabbitMqUrlConverter
 {
+    /// <summary>
+    /// convert string to rabbitmq parts
+    /// </summary>
     public static RabbitMqUrl ConvertToManagementUrl(string input)
     {
         return ConvertToManagementUrl(new Uri(input));
     }
 
+    /// <summary>
+    /// Convert Url into rabbitmq parts
+    /// </summary>
     public static RabbitMqUrl ConvertToManagementUrl(Uri url)
     {
         var scheme = url.Scheme switch
@@ -46,4 +55,7 @@ public static class RabbitMqUrlConverter
     }
 }
 
+/// <summary>
+/// RabbitMq Parts
+/// </summary>
 public record RabbitMqUrl(Uri Uri, string VirtualHost, string? BasicCredentials);

@@ -49,7 +49,7 @@ public class RabbitMqHttpBinding
     /// </summary>
     public string PropertiesKey { get; set; }
 
-    public string DebuggerDisplay()
+    string DebuggerDisplay()
     {
         var src = Source;
         if (src == "")
