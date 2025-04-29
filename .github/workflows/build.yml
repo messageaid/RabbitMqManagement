@@ -12,6 +12,21 @@ jobs:
   build:
     runs-on: ubuntu-24.04
     name: Build and Test
+    services:
+      rabbitmq:
+        image: rabbitmq:3.8-management
+        env:
+          RABBITMQ_DEFAULT_USER: guest
+          RABBITMQ_DEFAULT_PASS: guest
+        # needed because the rabbitmq container does not provide a healthcheck
+        options: >-
+          --health-cmd "rabbitmqctl node_health_check" 
+          --health-interval 10s 
+          --health-timeout 5s 
+          --health-retries 5
+        ports:
+          - 5672:5672
+          - 15672:15672
     steps:
       - uses: actions/checkout@v4
       - name: Set up dotnet
