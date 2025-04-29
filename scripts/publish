@@ -1,0 +1,9 @@
+#!/bin/bash
+
+VERSION=${1:-0.9.0}
+
+rm -r ./out
+mkdir out
+
+dotnet pack -p:PackageVersion=$VERSION -o ./out src/RabbitMqManagement
+dotnet nuget push "./out/*.nupkg" --api-key "$NUGET_KEY" --source nuget.org
